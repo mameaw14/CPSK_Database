@@ -8,8 +8,9 @@ class events extends CI_Controller {
         }
 
         public function index(){
+            $data['events'] = $this->events_model->get_all_event();
             $this->load->view('templates/header');
-            $this->load->view('home');
+            $this->load->view('events/index',$data);
             $this->load->view('templates/footer');
         }
 
@@ -37,7 +38,7 @@ class events extends CI_Controller {
                 $data['add']['created_by'] = get_user_std();
                 if($data['add']['additional_field_enabled']=='on') $data['add']['additional_field_enabled'] = TRUE;
                 else $data['add']['additional_field_enabled'] = FALSE;
-                
+
                 $this->events_model->insert_row($data['add']);
 
                 $this->load->view('templates/header');

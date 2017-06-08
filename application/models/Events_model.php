@@ -7,7 +7,12 @@
 			$this->load->database();
 		}
 
-		public function insert_row($data){
+		public function insert_row($data) {
 			$this->db->insert('event', $data);
+		}
+
+		public function get_all_event() {
+			$query = $this->db->get('event');
+			return $query->result();
 		}
 	}
